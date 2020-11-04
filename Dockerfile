@@ -7,16 +7,16 @@ ENV SIAB_USERCSS="Normal:+/etc/shellinabox/options-enabled/00+Black-on-White.css
     SIAB_USERID=1000 \
     SIAB_GROUP=guest \
     SIAB_GROUPID=1000 \
-    SIAB_PASSWORD=putsafepasswordhere \
+    SIAB_PASSWORD=guest \
     SIAB_SHELL=/bin/bash \
     SIAB_HOME=/home/guest \
-    SIAB_SUDO=false \
-    SIAB_SSL=true \
+    SIAB_SUDO=true \
+    SIAB_SSL=false \
     SIAB_SERVICE=/:LOGIN \
     SIAB_PKGS=none \
     SIAB_SCRIPT=none
 
-RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shellinabox && \
+RUN apt-get update && apt-get install -y openssl curl openssh-client sudo shellinabox ruby && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     ln -sf '/etc/shellinabox/options-enabled/00+Black on White.css' \
